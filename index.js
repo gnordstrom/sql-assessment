@@ -88,6 +88,7 @@ app.get('/api/user/:userId/vehiclecount', function(req, res) {
 // Return all vehicles that belong to specified user
 app.get('/api/user/:userId/vehicle', function(req, res) {
   db.user_vehicles(parseInt(req.params.userId), function(err, response) {
+    console.log(req.params.userId);
     if (err) {
       res.status(500).send(err);
     } else {
@@ -108,7 +109,7 @@ app.get('/api/vehicle', function(req, res) {
       }
     });
   } else {
-    db.get_vehicle_by_email([req.query.email], function(err, response) {
+    db.get_vehicle_by_email([req.query.UserEmail], function(err, response) {
       if (err) {
         res.status(500).send(err);
       } else {
